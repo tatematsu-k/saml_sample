@@ -1,0 +1,10 @@
+雑にSAMLのidpを立てるためのリポジトリ。
+copilotをいい感じにinitした上でdeployすればidpが立ち上がる。
+
+ここら辺の環境変数はプロダクトに応じていい感じに書き換える
+
+```
+SIMPLESAMLPHP_SP_ENTITY_ID
+SIMPLESAMLPHP_SP_ASSERTION_CONSUMER_SERVICE
+SIMPLESAMLPHP_SP_SINGLE_LOGOUT_SERVICE
+```
