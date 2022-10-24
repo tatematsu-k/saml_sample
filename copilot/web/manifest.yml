@@ -1,0 +1,31 @@
+# The manifest for the "web" service.
+# Read the full specification for the "Load Balanced Web Service" type at:
+#  https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/
+
+# Your service name will be used in naming your resources like log groups, ECS services, etc.
+name: web
+type: Load Balanced Web Service
+
+# Distribute traffic to your service.
+http:
+  path: '/'
+  healthcheck: '/simplesaml/module.php/core/frontpage_welcome.php'
+
+# Configuration for your containers and service.
+image:
+  location: kenchan0130/simplesamlphp:1.19.5
+  # Port exposed through your container to route traffic to it.
+  port: 8080
+
+cpu: 256       # Number of CPU units for the task.
+memory: 512    # Amount of memory in MiB used by the task.
+exec: true     # Enable running commands in your container.
+
+environments:
+ dev2:
+  count:
+    spot: 1
+  variables:
+    SIMPLESAMLPHP_SP_ENTITY_ID: http://localhost:3000
+    SIMPLESAMLPHP_SP_ASSERTION_CONSUMER_SERVICE: http://localhost:3000/saml/acs
+    SIMPLESAMLPHP_SP_SINGLE_LOGOUT_SERVICE: http://localhost:3000/logout
