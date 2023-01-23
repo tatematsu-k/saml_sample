@@ -13,7 +13,7 @@ http:
 
 # Configuration for your containers and service.
 image:
-  location: kenchan0130/simplesamlphp:1.19.5
+  location: kenchan0130/simplesamlphp:1.19.7
   # Port exposed through your container to route traffic to it.
   port: 8080
 
